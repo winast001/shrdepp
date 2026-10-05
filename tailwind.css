@@ -1,1 +1,38 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Game Predictions</title>
+    <link href="css/tailwind.min.css" rel="stylesheet">
 
+    <style>
+      .console-box {
+        font-family: monospace;
+        background-color: #1a1a1a;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 20px #00ff88;
+        color: #00ff88;
+        height: 250px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-900 text-white font-sans">
+    <div id="loading" class="loading-screen hidden-screen">
+      <p>Loading... Please wait a moment.</p>
+    </div>
+
+    <div id="mainContent" class="">
+      <header class="w-full bg-gray-800 p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-green-400">
+          AI Predictions 1xBet
+        </h1>
+
+        <nav class="space-x-4">
+          <a href="#how" class="hover:text-green-400">How It Works</a>
+          <a href="#games" class="hover:text-green-400">Games</a>
+          <a href="#start" class="hover:text-green-400">Start</a>
+        </nav>
+      </header>
