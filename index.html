@@ -1,0 +1,181 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Game Predictions</title>
+    <link href="tailwind.min.css" rel="stylesheet">
+    <style>
+      .console-box {
+        font-family: monospace;
+        background-color: #1a1a1a;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 0 20px #00ff88;
+        color: #00ff88;
+        height: 250px;
+        overflow-y: auto;
+      }
+      .loading-screen {
+        font-family: monospace;
+        background: #000;
+        color: #00ff88;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        flex-direction: column;
+        z-index: 50;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+      .hidden-screen {
+        display: none;
+      }
+      .disabled-btn {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .game-btn {
+        transition: all 0.3s ease;
+      }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+    <div id="loading" class="loading-screen hidden-screen">
+      <p>Loading... Please wait a moment.</p>
+    </div>
+
+    <div id="mainContent" class="">
+      <header class="w-full bg-gray-800 p-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold text-green-400">
+          AI Predictions 1xBet 
+        </h1>
+        <nav class="space-x-4">
+          <a href="#how" class="hover:text-green-400">How It Works</a>
+          <a href="#games" class="hover:text-green-400">Games</a>
+          <a href="#start" class="hover:text-green-400">Start</a>
+        </nav>
+      </header>
+
+      <section class="min-h-screen flex flex-col items-center justify-center px-4 text-center">
+        <h2 class="text-3xl md:text-5xl font-bold mb-6">
+          Earn real money with our AI game predictions
+        </h2>
+        <p class="max-w-xl mb-8 text-gray-300">
+          Join thousands of players using our AI to win popular games. 96% accuracy, real-time predictions, and fast withdrawals. 
+
+          The bot will not provide more than 6 correct signals; this is the demo version of the website.
+          After 6 games, come back and we will continue playing.
+        </p>
+
+        <button id="startButton" class="bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-xl text-lg transition">
+          Start Now
+        </button>
+
+        <!-- ID input section -->
+        <div id="idInputSection" class="hidden mt-6 max-w-sm w-full">
+          <input id="betIdInput" type="text" inputmode="numeric" pattern="\d*" placeholder="Your 1xBet ID" class="w-full p-3 rounded-lg border border-gray-600 bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-400">
+          <button id="submitIdBtn" class="mt-4 w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg">
+            Submit ID
+          </button>
+          <p id="inputError" class="hidden mt-2 text-red-500 text-sm">
+            Please enter a valid 1xBet ID (minimum 6 digits).
+          </p>
+        </div>
+
+        <!-- Game buttons section -->
+        <div id="gameButtonsSection" class="hidden mt-8 w-full max-w-md">
+          <h3 class="text-xl font-semibold mb-4">Choose your game</h3>
+          <div class="grid grid-cols-1 gap-4">
+            <a href="https://aviator-my-rhack.vercel.app/" class="game-btn bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg">
+              Aviator Predictions
+            </a>
+            <a href="https://mines-my-rhack.vercel.app/" class="game-btn bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-4 rounded-lg">
+              Mines Predictions
+            </a>
+            <button disabled="" class="game-btn disabled-btn bg-gray-600 text-white font-bold py-3 px-4 rounded-lg">
+              Penalty Predictions (Coming Soon)
+            </button>
+          </div>
+          <p class="mt-4 text-gray-400 text-sm">
+            Penalty Predictions will be available soon for players.
+          </p>
+        </div>
+      </section>
+
+      <section id="how" class="py-16 bg-gray-800 px-4">
+        <div class="max-w-4xl mx-auto">
+          <h2 class="text-3xl font-bold mb-8 text-center">How It Works</h2>
+          <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-gray-700 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-3 text-green-400">
+                1. Enter your ID
+              </h3>
+              <p>Enter your 1xBet account ID to get started.</p>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-3 text-green-400">
+                2. Choose a game
+              </h3>
+              <p>
+                Pick from the prediction games available.
+              </p>
+            </div>
+            <div class="bg-gray-700 p-6 rounded-lg">
+              <h3 class="text-xl font-semibold mb-3 text-green-400">
+                3. Receive predictions
+              </h3>
+              <p>
+                Get AI-powered predictions with 96% accuracy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="text-center text-gray-500 text-sm py-6">
+        © 2025 AI Predictions. Not affiliated with 1xBet. Please play responsibly.
+      </footer>
+    </div>
+
+    <script>
+      // Loading screen logic
+      setTimeout(() => {
+        document.getElementById("loading").classList.add("hidden-screen");
+        document
+          .getElementById("mainContent")
+          .classList.remove("hidden-screen");
+      }, 3000);
+
+      // Elements
+      const startButton = document.getElementById("startButton");
+      const idInputSection = document.getElementById("idInputSection");
+      const submitIdBtn = document.getElementById("submitIdBtn");
+      const betIdInput = document.getElementById("betIdInput");
+      const inputError = document.getElementById("inputError");
+      const gameButtonsSection = document.getElementById("gameButtonsSection");
+
+      // Show input field when start button clicked
+      startButton.addEventListener("click", () => {
+        startButton.classList.add("hidden");
+        idInputSection.classList.remove("hidden");
+      });
+
+      // Submit ID logic
+      submitIdBtn.addEventListener("click", () => {
+        const value = betIdInput.value.trim();
+        const isValid = /^\d{6,}$/.test(value); // minimum 6 digits
+
+        if (!isValid) {
+          inputError.classList.remove("hidden");
+        } else {
+          inputError.classList.add("hidden");
+          idInputSection.classList.add("hidden");
+          gameButtonsSection.classList.remove("hidden");
+        }
+      });
+    </script>
+
+
+</body></html>
